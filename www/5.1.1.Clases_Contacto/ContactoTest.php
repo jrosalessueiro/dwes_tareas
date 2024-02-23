@@ -1,5 +1,5 @@
 <?php
-require_once('index1.php');
+require_once('Contacto.php');
 
 //Crea 3 objetos de la clase Contacto en un fichero ContactoTest.php, asigna valores a todas sus propiedades y muéstrelos a continuación, primero con los métodos get() 
 //y luego con el método muestraInformacion().
