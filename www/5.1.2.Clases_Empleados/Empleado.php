@@ -20,7 +20,6 @@ Dada la siguiente clase Empleado en un fichero Empleado.php.
 }*/
 
 //Completa los siguientes apartados:
-
 //Cada vez que se cree un empleado se debe aumentar la variable $numEmpleados.
 //El construtor de la clase empleado asignará un salario de entrada y un nombre, que se pasarán como argumentos. El salario de entrada no podrá superar los 2000 euros.
 
