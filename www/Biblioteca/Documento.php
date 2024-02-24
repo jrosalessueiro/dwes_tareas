@@ -49,7 +49,7 @@ De cada documento, poderemos:
 
 class Documento
 {
-    protected $id;
+    public $id;
     public $tipo;
 
     function __construct($id, $tipo){
@@ -81,6 +81,15 @@ class Libro extends Documento
     function setAno($ano){
         $this->anoPublicacion=$ano;
     }
+
+    function datos(){
+        echo 'ID: '.$this->id.'<br>';
+        echo 'Tipo: '.$this->tipo.'<br>';
+        echo 'Título: '.$this->titulo.'<br>';
+        echo 'Autor: '.$this->autor.'<br>';
+        echo 'Nº Páginas: '.$this->numeroPaginas.'<br>';
+        echo 'Año de Publicación: '.$this->anoPublicacion.'<br>';
+    }
 }
 
 class Dvd extends Documento
@@ -99,6 +108,14 @@ class Dvd extends Documento
     function setAno($ano){
         $this->anoPublicacion=$ano;
     }
+
+    function datos(){
+        echo 'ID: '.$this->id.'<br>';
+        echo 'Tipo: '.$this->tipo.'<br>';
+        echo 'Unidades: '.$this->unidades.'<br>';
+        echo 'Formato: '.$this->formato.'<br>';
+        echo 'Año de Publicación: '.$this->anoPublicacion.'<br>';
+    }
 }
 
 class Revista extends Documento
@@ -116,5 +133,13 @@ class Revista extends Documento
 
     function setAno($ano){
         $this->anoPublicacion=$ano;
+    }
+
+    function datos(){
+        echo 'ID: '.$this->id.'<br>';
+        echo 'Tipo: '.$this->tipo.'<br>';
+        echo 'Título: '.$this->titulo.'<br>';
+        echo 'Nº Páginas: '.$this->numeroPaginas.'<br>';
+        echo 'Año de Publicación: '.$this->anoPublicacion.'<br>';
     }
 }
