@@ -6,20 +6,23 @@ class Biblioteca{
     public $direccion;
     public $numeroTelefono;
     public $documentos=array();
+    public $biblios=array();
 
 public function __construct($nombre,$direccion,$numeroTelefono,$documentos){
     $this->nombre=$nombre;
     $this->direccion=$direccion;
     $this->numeroTelefono=$numeroTelefono;
     $this->documentos=$documentos;
+    array_push($this->biblios,$nombre);
 
 }
 
 public function registro(Documento $documento){
     if($documento instanceof Libro || $documento instanceof Revista||$documento instanceof Dvd){
         $this->documentos[$documento->id]=$documento;
+        echo 'El documento se ha registrado correctamente.<br>';
     }else{
-        echo 'La biblioteca sólo puede albergar libros, revistas y dvd.';
+        echo 'La biblioteca sólo puede albergar libros, revistas y dvd.<br>';
     }
 }
 
@@ -39,7 +42,7 @@ public function borrarId($idBorrar){
     if(array_key_exists($idBorrar,$this->documentos)){
         unset($documentos[$idBorrar]);    
     }else{
-        echo 'No esiste el documento con id: '. $idBorrar;
+        echo 'No esiste el documento con id: '. $idBorrar.'<br>';
     }
 }
 
@@ -52,7 +55,10 @@ public function datosBiblio(){
         }   
     }
 
-public function listaBilio(){}
-
+public function listaBilio(){
+    echo 'Las bibliotecas que hay creadas son: <br>';
+    foreach($this->biblios as $biblio){
+        echo '* ' . $biblio . '<br>';
+    }   
 }
-
+}

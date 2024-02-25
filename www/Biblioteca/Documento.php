@@ -47,8 +47,7 @@ De cada documento, poderemos:
     Modificar o ano de publicación.*/
 
 
-class Documento
-{
+class Documento{
     public $id;
     public $tipo;
 
@@ -62,8 +61,7 @@ class Documento
     function setAno($ano){}
 }
 
-class Libro extends Documento
-{
+class Libro extends Documento{
     public $titulo;
     public $autor;
     public $numeroPaginas;
@@ -92,8 +90,7 @@ class Libro extends Documento
     }
 }
 
-class Dvd extends Documento
-{
+class Dvd extends Documento{
     public $unidades;
     public $formato;
     public $anoPublicacion;
@@ -118,8 +115,7 @@ class Dvd extends Documento
     }
 }
 
-class Revista extends Documento
-{
+class Revista extends Documento{
     public $titulo;
     public $numeroPaginas;
     public $anoPublicacion;
