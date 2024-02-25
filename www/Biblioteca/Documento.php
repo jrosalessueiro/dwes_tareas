@@ -81,7 +81,7 @@ class Libro extends Documento{
     }
 
     function datos(){
-        echo 'ID: '.$this->id.'<br>';
+        echo '<br>ID: '.$this->id.'<br>';
         echo 'Tipo: '.$this->tipo.'<br>';
         echo 'Título: '.$this->titulo.'<br>';
         echo 'Autor: '.$this->autor.'<br>';
@@ -107,7 +107,7 @@ class Dvd extends Documento{
     }
 
     function datos(){
-        echo 'ID: '.$this->id.'<br>';
+        echo '<br>ID: '.$this->id.'<br>';
         echo 'Tipo: '.$this->tipo.'<br>';
         echo 'Unidades: '.$this->unidades.'<br>';
         echo 'Formato: '.$this->formato.'<br>';
@@ -132,7 +132,7 @@ class Revista extends Documento{
     }
 
     function datos(){
-        echo 'ID: '.$this->id.'<br>';
+        echo '<br>ID: '.$this->id.'<br>';
         echo 'Tipo: '.$this->tipo.'<br>';
         echo 'Título: '.$this->titulo.'<br>';
         echo 'Nº Páginas: '.$this->numeroPaginas.'<br>';

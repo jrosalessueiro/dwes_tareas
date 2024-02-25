@@ -6,32 +6,38 @@ class Biblioteca{
     public $direccion;
     public $numeroTelefono;
     public $documentos=array();
-    public $biblios=array();
+    public static $biblios=array();
 
 public function __construct($nombre,$direccion,$numeroTelefono,$documentos){
     $this->nombre=$nombre;
     $this->direccion=$direccion;
     $this->numeroTelefono=$numeroTelefono;
     $this->documentos=$documentos;
-    array_push($this->biblios,$nombre);
+    self::$biblios[]=$this;
 
 }
 
 public function registro(Documento $documento){
     if($documento instanceof Libro || $documento instanceof Revista||$documento instanceof Dvd){
-        $this->documentos[$documento->id]=$documento;
-        echo 'El documento se ha registrado correctamente.<br>';
+        if($documento->tipo==='Libro' || $documento->tipo==='Revista' || $documento->tipo==='Dvd'){
+            $this->documentos[$documento->id]=$documento;
+            echo 'El documento se ha registrado correctamente.<br>';
+        }else{
+        echo 'La biblioteca sólo puede albergar libros, revistas y dvd.<br>';
+    }
     }else{
         echo 'La biblioteca sólo puede albergar libros, revistas y dvd.<br>';
     }
 }
 
 public function listaTodos(){
+    echo '<br>Los documentos que se guardan en la biblioteca '. $this->nombre . ' son: <br><br>';
     foreach($this->documentos as $documento){
         $documento->datos(); 
     }
 }
 public function listaFormato($formato){
+    echo '<br>Los documentos en formato ' . $formato . ' que se guardan en la biblioteca '. $this->nombre . ' son: <br><br>';
     foreach($this->documentos as $documento){
         if($documento->tipo===$formato){
             $documento->datos(); 
@@ -39,26 +45,29 @@ public function listaFormato($formato){
     }
 }
 public function borrarId($idBorrar){
-    if(array_key_exists($idBorrar,$this->documentos)){
-        unset($documentos[$idBorrar]);    
-    }else{
-        echo 'No esiste el documento con id: '. $idBorrar.'<br>';
+    foreach($this->documentos as $indice=>$documento){
+        if($documento->id===$idBorrar){
+            unset($this->documentos[$indice]);
+            echo '<br>Documento con ID ' . $idBorrar . ' eliminado correctamente.<br>';
+            return; 
+        }
     }
+    echo '<br>No existe el documento con ID: '. $idBorrar.'<br>';
 }
+    
 
 public function datosBiblio(){
-        echo 'Nombre: '.$this->nombre.'<br>';
-        echo 'Dirección: '.$this->direccion.'<br>';
-        echo 'Nº Teléfono: '.$this->numeroTelefono.'<br>';
-        foreach($this->documentos as $documento){
-            $documento->datos();
-        }   
-    }
+    echo '<br>Los datos de la biblioteca '. $this->nombre . ' son: <br>';
+    echo 'Nombre: '.$this->nombre.'<br>';
+    echo 'Dirección: '.$this->direccion.'<br>';
+    echo 'Nº Teléfono: '.$this->numeroTelefono.'<br>';
+    $this->listaTodos();
+}
 
-public function listaBilio(){
-    echo 'Las bibliotecas que hay creadas son: <br>';
-    foreach($this->biblios as $biblio){
-        echo '* ' . $biblio . '<br>';
+public static function listaBiblio(){
+    echo '<br>Las bibliotecas que hay creadas son: <br>';
+    foreach(Biblioteca::$biblios as $biblio){
+        echo '* ' . $biblio->nombre . '<br>';
     }   
 }
 }
