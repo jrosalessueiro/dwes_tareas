@@ -1,5 +1,5 @@
 <?php
-include('index4.php');
+include('Participante.php');
 include('jugador.php');
 
 $jugador1 = new Jugador('Cristiano',38,'Delantero');

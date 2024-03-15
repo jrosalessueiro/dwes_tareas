@@ -1,7 +1,6 @@
 <?php
 
-function get_conexion()
-{
+function get_conexion(){
     $conexion = new mysqli('localhost', 'root', '');
     // Comprobar la conexión
     $error = $conexion->connect_errno;
@@ -12,12 +11,10 @@ function get_conexion()
     return $conexion;
 }
 
-function seleccionar_bd_tiendaClass($conexion)
-{
+function seleccionar_bd_tiendaClass($conexion){
     $conexion->select_db('tiendaClass');
 }
-function crear_bd_tiendaClass($conexion)
-{
+function crear_bd_tiendaClass($conexion){
     $sql = 'CREATE DATABASE IF NOT EXISTS tiendaClass';
     if ($conexion->query($sql)) {
         echo 'Base de datos creada correctamente.<br>';
@@ -26,8 +23,7 @@ function crear_bd_tiendaClass($conexion)
     }
 }
 
-function crear_tabla_usuario($conexion)
-{
+function crear_tabla_usuario($conexion){
     $sql = 'CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nombre VARCHAR(50),
@@ -45,8 +41,7 @@ function crear_tabla_usuario($conexion)
     }
 }
 
-function crear_tabla_productos($conexion)
-{
+function crear_tabla_productos($conexion){
     $sql = 'CREATE TABLE IF NOT EXISTS productos (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nombre VARCHAR(50),
@@ -63,8 +58,7 @@ function crear_tabla_productos($conexion)
     }
 }
 
-function insertar_usuario($conexion, $usuario)
-{
+function insertar_usuario($conexion, $usuario){
     $query = 'INSERT INTO usuarios (nombre, apellidos, edad, provincia, email, contrasenha) VALUES (?,?,?,?,?,?)';
     $stmt = $conexion->prepare($query);
 
@@ -86,8 +80,7 @@ function insertar_usuario($conexion, $usuario)
     }
 }
 
-function insertar_producto($conexion, $nombre, $descripcion, $precio, $unidades, $files)
-{
+function insertar_producto($conexion, $nombre, $descripcion, $precio, $unidades, $files){
     $filesData = comprobaciones($files);
 
     foreach ($filesData as $fileData) {
@@ -106,13 +99,11 @@ function insertar_producto($conexion, $nombre, $descripcion, $precio, $unidades,
     }
 }
 
-function cerrar_conexion($conexion)
-{
+function cerrar_conexion($conexion){
     $conexion->close();
 }
 
-function borrar_usuario($conexion, $busqueda)
-{
+function borrar_usuario($conexion, $busqueda){
     $sql = 'DELETE FROM usuarios WHERE id=' . $busqueda;
     if ($conexion->query($sql)) {
         echo 'Se ha borrado un registro correctamente';
@@ -121,16 +112,14 @@ function borrar_usuario($conexion, $busqueda)
     }
 }
 
-function obtener_usuario($conexion, $id)
-{
+function obtener_usuario($conexion, $id){
     $sql = 'SELECT * FROM usuarios WHERE id =' . $id;
 
     $resultado = $conexion->query($sql);
     return $resultado->fetch_assoc();
 }
 
-function actualizar_usuario($conexion, $id, $nombre, $apellidos, $edad, $provincia, $email, $contrasenha)
-{
+function actualizar_usuario($conexion, $id, $nombre, $apellidos, $edad, $provincia, $email, $contrasenha){
     $query = 'UPDATE usuarios SET nombre = ?, apellidos = ?, edad = ?, provincia = ?, email = ?, contrasenha = ? WHERE id = ?';
     $stmt = $conexion->prepare($query);
     $contrasenhaHash = md5($contrasenha);
@@ -144,8 +133,7 @@ function actualizar_usuario($conexion, $id, $nombre, $apellidos, $edad, $provinc
     }
 }
 
-function getUsuario($conexion, string $email, string $pass): ?array
-{
+function getUsuario($conexion, string $email, string $pass): ?array{
     $query = 'SELECT * FROM usuarios WHERE email = ? AND contrasenha = ?';
     $stmt = $conexion->prepare($query);
 

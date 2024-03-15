@@ -19,7 +19,7 @@ class Contacto
     //Agrega un método __destruct() a la clase, que muestra en pantalla el objeto que se está destruyendo.
     function __destruct()
     {
-        echo "El contacto {$this->nombre} {$this->apellido} se está destruyendo.\n";
+        echo "El contacto {$this->nombre} {$this->apellido} se está destruyendo.<br>";
     }
 
     //Genera los getters y los setters para todas las propiedades y el método muestraInformacion() que imprima los valores de las propiedades.

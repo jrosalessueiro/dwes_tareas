@@ -13,8 +13,8 @@ Crea cada Trait en un fichero diferente.
 Cree una clase llamada NotasTrait que use los dos traits anteriores.
 Escriba el código correspondiente para “probar” el código anterior en un fichero NotasTrait.php.*/
 
-trait CalculosCentroEstudios{
-    public function numeroDeAprobados(){
+trait CalculosCentrosEstudios {
+    public function numeroDeAprobados() {
         foreach ($this->notas as $nota) {
             if ($nota >= 5) {
                 $this->numAprobados++;
@@ -23,7 +23,7 @@ trait CalculosCentroEstudios{
         return $this->numAprobados;
     }
 
-    public function numeroDeSuspensos(){
+    public function numeroDeSuspensos() {
         foreach ($this->notas as $nota) {
             if ($nota < 5) {
                 $this->numSuspensos++;
@@ -31,12 +31,13 @@ trait CalculosCentroEstudios{
         }
         return $this->numSuspensos;
     }
-    
-    public function notaMedia(){
+
+    public function notaMedia() {
         foreach ($this->notas as $nota) {
             $this->num++;
         }
-        $this->media=array_sum($this->notas)/$this->num;
+        $this->media = array_sum($this->notas) / $this->num;
         return number_format($this->media, 2, ',', ' ');
     }
 }
+?>

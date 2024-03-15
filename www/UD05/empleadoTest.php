@@ -1,5 +1,5 @@
 <?php
-require_once('index2.php');
+require_once('Empleado.php');
 
 $empleado1 = new Empleado('Michael',1500);
 echo ' Nombre: '. $empleado1->getNombre() . "<br>";
@@ -15,4 +15,9 @@ $empleado3 = new Empleado('Sarah',985);
 echo ' Nombre: '. $empleado3->getNombre() . "<br>";
 echo ' Número: ' . Empleado::$numEmpleados ."<br>";
 echo $empleado3->getSalario()."<br><br>";
+
+$empleado4 = new Empleado('Manolo',3000);
+echo ' Nombre: '. $empleado4->getNombre() . "<br>";
+echo ' Número: ' . Empleado::$numEmpleados ."<br>";
+echo $empleado4->getSalario()."<br><br>";
 ?>

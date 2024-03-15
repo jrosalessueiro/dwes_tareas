@@ -1,5 +1,5 @@
 <?php
-include('index4.php');
+include('Participante.php');
 include('arbitro.php');
 
 $arbitro1 = new Arbitro('Undiano',48,17);

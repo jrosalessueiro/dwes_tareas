@@ -5,25 +5,27 @@ Tendrá una propiedad privada “turno”.
 Deberá ejecutar el constructor de la clase padre añadiendo la variable turno.
 Crear el setter para tusólo pueden ser “diurno. Los valores para esta variable rno” o “nocturno”.*/
 
-class Operario extends Empleado{
+class Operario extends Empleado {
+    private $turno;
 
-private $turno;
-
-    function __construct($nombre,$salario,$turno){
-        parent::__construct($nombre,$salario);
+    // Constructor
+    public function __construct($nombre, $sueldo, $turno) {
+        parent::__construct($nombre, $sueldo);
         $this->setTurno($turno);
     }
 
-    public function setTurno($turno){
-        if($turno==="diurno"||$turno==="nocturno"){
-            $this->turno=$turno;
-        }else{
-            throw new InvalidArgumentException("El turno debe ser 'diurno' o 'nocturno'.");
+    // Setter para turno
+    public function setTurno($turno) {
+        if ($turno === "diurno" || $turno === "nocturno") {
+            $this->turno = $turno;
+        } else {
+            echo "Error: El turno solo puede ser 'diurno' o 'nocturno'.";
         }
     }
 
-    public function getTurno(){
-    return $this->turno;
+    // Getter para turno
+    public function getTurno() {
+        return $this->turno;
     }
 }
 ?>

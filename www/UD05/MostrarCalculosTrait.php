@@ -1,7 +1,7 @@
 <?php
 trait MostrarCalculos{
     public function saludo(){
-        echo 'Bienvenido al centro de cálculo';
+        echo 'Bienvenido al centro de cálculo <br>';
     }
 
     public function showCalculusStudyCenter($aprobados,$suspensos,$media){
