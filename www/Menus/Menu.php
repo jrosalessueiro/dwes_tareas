@@ -12,13 +12,31 @@ Cada opción ten:
     Cor de fondo*/
 
 class Menu{
-    public $opciones=array();
+    public $opciones=[];
     public $tipo;
 
     public function __construct($tipo,$opciones){
         $this->tipo=$tipo;
-        $this->opciones=$opciones;
+        $this->opciones[]=$opciones;
     }
+    function generarMenu() {
+        $menuHTML = '<div style="background-color: ';
+        $menuHTML .= $this->tipo === 'horizontal' ? 'lightgrey">' : 'none; display: flex; flex-direction: column;">';
+
+        foreach ($this->opciones as $opcion) {
+            $menuHTML .= '<a href="' . $opcion->enlace . '" style="background-color: ' . $opcion->colorFondo . ';">';
+            $menuHTML .= $opcion->titulo . '</a>';
+
+            if ($this->tipo === 'horizontal') {
+                $menuHTML .= ' ';
+            }
+        }
+
+        $menuHTML .= '</div>';
+
+        return $menuHTML;
+    }
+
 }
 
 class Opcion{
@@ -30,5 +48,6 @@ class Opcion{
         $this->titulo=$titulo;
         $this->enlace=$enlace;
         $this->colorFondo=$colorFondo;
-    }    
-}
+    }   
+} 
+    
