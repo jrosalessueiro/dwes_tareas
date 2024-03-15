@@ -10,18 +10,18 @@ $usuarios = array(
 
 // Obtener los datos del formulario
 if (isset($_POST['username'], $_POST['password'])) {
-    $user = $_POST['username'];
-    $passwd = $_POST['password'];
+    $user = $_POST['username']?? '';
+    $passwd = $_POST['password']?? '';
 }
 // Validar las credenciales
 foreach ($usuarios as $clave => $valor) {
     if (isset($usuarios[$clave]) && $usuarios[$clave] === $passwd) {
-    // Iniciar sesión
-    header('Location: welcome.php');
-    exit();
+        // Iniciar sesión
+        header('Location: welcome.php');
+        exit();
     } else {
-    // Credenciales inválidas, redirigir al formulario de inicio de sesión
-    header('Location: index.php');
-    exit();
+        // Credenciales inválidas, redirigir al formulario de inicio de sesión
+        header('Location: index.php');
+        exit();
     }
 }

@@ -17,10 +17,24 @@
 
     <h2>Notas Guardadas</h2>
     <ul>
-        <?php
         
-        // Mostrar las notas guardadas en forma de lista
-        ?>
+        <?php
+            // Mostrar las notas guardadas en forma de lista
+            $arrFiles = array();
+
+            $handle = opendir('sdfasdfasf.txt');
+
+            if ($handle) {
+                while (($entry = readdir($handle)) !== FALSE) {
+                $arrFiles[] = $entry;
+                }
+
+            }
+
+        closedir($handle);
+
+?>
+
     </ul>
 </body>
 </html>
