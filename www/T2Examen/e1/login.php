@@ -1,4 +1,5 @@
 <?php
+include('index.php');
 
 // Datos de usuario para validar (en un caso real, estos datos se obtendrían de una base de datos)
 $usuarios = array(
@@ -8,15 +9,19 @@ $usuarios = array(
 );
 
 // Obtener los datos del formulario
-
+if (isset($_POST['username'], $_POST['password'])) {
+    $user = $_POST['username'];
+    $passwd = $_POST['password'];
+}
 // Validar las credenciales
-if (isset($usuarios[$username]) && $usuarios[$username] === $password) {
+foreach ($usuarios as $clave => $valor) {
+    if (isset($usuarios[$clave]) && $usuarios[$clave] === $passwd) {
     // Iniciar sesión
-   
     header('Location: welcome.php');
     exit();
-} else {
+    } else {
     // Credenciales inválidas, redirigir al formulario de inicio de sesión
     header('Location: index.php');
     exit();
+    }
 }
