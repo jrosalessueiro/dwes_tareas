@@ -20,18 +20,15 @@
         
         <?php
             // Mostrar las notas guardadas en forma de lista
-            $arrFiles = array();
 
-            $handle = opendir('sdfasdfasf.txt');
-
-            if ($handle) {
-                while (($entry = readdir($handle)) !== FALSE) {
-                $arrFiles[] = $entry;
-                }
-
+            $archivo = fopen("sdfasdfasf.txt", "r");
+            while (!feof($archivo)) {
+              $linea = fgets($archivo);
+              echo '<li>';
+              echo $linea;
+              echo '</li>';
             }
-
-        closedir($handle);
+            fclose($archivo);
 
 ?>
 
