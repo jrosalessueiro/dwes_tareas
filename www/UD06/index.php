@@ -1,10 +1,12 @@
 <?php
 
-// require 'flight/Flight.php';
-require 'flight/autoload.php';
+require 'flight/Flight.php';
+//require 'flight/autoload.php';
 
-Flight::route('/', function () {
-    echo 'hello world!';
+Flight::register('db', 'PDO', array('mysql:host=db;dbname=myDBPDO', 'root', 'test'));
+
+Flight::route('GET /clientes', function () {
+    
 });
 
 Flight::start();
